@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{6AB60A05-D98A-4193-B62D-1FD06D301787}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		global.json = global.json
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{895660D6-DDE7-4146-8851-84809857ED64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3857697E-71DA-4442-ADF8-A71FFBE0EC31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Mailer", "src\Monq.Mailer\Monq.Mailer.csproj", "{6E12DF9F-9FBE-492F-9ABA-971B33C6ED88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Mailer.Client", "src\Monq.Mailer.Client\Monq.Mailer.Client.csproj", "{8C7C619B-58CB-487C-9EEF-30528C94AA4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Mailer.Contracts", "src\Monq.Mailer.Contracts\Monq.Mailer.Contracts.csproj", "{8E3F5DDF-88E1-4FFF-AF2B-2FA0B5B062F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{F4D250C3-D930-4FEB-A8D5-23F288D61E06}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\AddMigration.cmd = scripts\AddMigration.cmd
+		scripts\Postgres.cmd = scripts\Postgres.cmd
+		scripts\MailDev.cmd = scripts\MailDev.cmd
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monq.Mailer.Tests", "tests\Monq.Mailer.Tests\Monq.Mailer.Tests.csproj", "{5F1F497E-596A-4CF6-81CA-4A8D22905326}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E12DF9F-9FBE-492F-9ABA-971B33C6ED88} = {895660D6-DDE7-4146-8851-84809857ED64}
+		{8C7C619B-58CB-487C-9EEF-30528C94AA4A} = {895660D6-DDE7-4146-8851-84809857ED64}
+		{8E3F5DDF-88E1-4FFF-AF2B-2FA0B5B062F2} = {895660D6-DDE7-4146-8851-84809857ED64}
+		{5F1F497E-596A-4CF6-81CA-4A8D22905326} = {3857697E-71DA-4442-ADF8-A71FFBE0EC31}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E12DF9F-9FBE-492F-9ABA-971B33C6ED88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E12DF9F-9FBE-492F-9ABA-971B33C6ED88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E12DF9F-9FBE-492F-9ABA-971B33C6ED88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E12DF9F-9FBE-492F-9ABA-971B33C6ED88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C7C619B-58CB-487C-9EEF-30528C94AA4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C7C619B-58CB-487C-9EEF-30528C94AA4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C7C619B-58CB-487C-9EEF-30528C94AA4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C7C619B-58CB-487C-9EEF-30528C94AA4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E3F5DDF-88E1-4FFF-AF2B-2FA0B5B062F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3F5DDF-88E1-4FFF-AF2B-2FA0B5B062F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3F5DDF-88E1-4FFF-AF2B-2FA0B5B062F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3F5DDF-88E1-4FFF-AF2B-2FA0B5B062F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F1F497E-596A-4CF6-81CA-4A8D22905326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F1F497E-596A-4CF6-81CA-4A8D22905326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F1F497E-596A-4CF6-81CA-4A8D22905326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F1F497E-596A-4CF6-81CA-4A8D22905326}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

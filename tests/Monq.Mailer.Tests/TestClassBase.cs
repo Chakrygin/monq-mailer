@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-
 using Monq.Mailer.Client;
 
 using RestEase;

@@ -3,19 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading;
 using System.Threading.Tasks;
 
 using FluentAssertions;
 
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Monq.Mailer.Client;
 using Monq.Mailer.Contracts;
-
-using RestEase;
 
 namespace Monq.Mailer.Tests;
 

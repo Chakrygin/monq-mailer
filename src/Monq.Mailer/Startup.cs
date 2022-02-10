@@ -1,10 +1,9 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore;
 
 using Monq.Mailer.DataAccess;
+using Monq.Mailer.Services;
 
 namespace Monq.Mailer;
 
@@ -25,6 +24,9 @@ public sealed class Startup
         {
             options.UseNpgsql(connectionString);
         });
+
+        services.AddSingleton<SmtpSendService>();
+        services.Configure<SmtpOptions>(Configuration.GetSection("Smtp"));
 
         services.AddSwaggerGen();
 

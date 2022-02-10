@@ -13,7 +13,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Monq.Mailer.Migrations
 {
     [DbContext(typeof(MailContext))]
-    [Migration("20220209182056_Init")]
+    [Migration("20220210191724_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,8 @@ namespace Monq.Mailer.Migrations
                         .HasColumnName("subject");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
 
                     b.ToTable("mail");
                 });

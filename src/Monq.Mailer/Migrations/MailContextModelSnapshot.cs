@@ -59,6 +59,8 @@ namespace Monq.Mailer.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CreatedAt");
+
                     b.ToTable("mail");
                 });
 #pragma warning restore 612, 618

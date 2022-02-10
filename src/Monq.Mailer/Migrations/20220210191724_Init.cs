@@ -26,6 +26,11 @@ namespace Monq.Mailer.Migrations
                 {
                     table.PrimaryKey("PK_mail", x => x.id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_mail_created_at",
+                table: "mail",
+                column: "created_at");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

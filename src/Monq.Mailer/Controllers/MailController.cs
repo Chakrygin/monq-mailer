@@ -6,10 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 using Monq.Mailer.Contracts;
 using Monq.Mailer.DataAccess;
+using Monq.Mailer.Services;
 
 namespace Monq.Mailer.Controllers;
 
 [ApiController]
+[Produces(MediaTypeNames.Application.Json)]
 public sealed class MailController : ControllerBase
 {
     private readonly MailContext _context;
@@ -20,37 +22,19 @@ public sealed class MailController : ControllerBase
     }
 
     [HttpPost("api/mails")]
-    public async Task<SendMailResponse> SendMail([FromBody] SendMailRequest request, CancellationToken cancellationToken)
+    public async Task<SendMailResponse> SendMail(
+        [FromBody] SendMailRequest request,
+        [FromServices] SmtpSendService smtpSendService,
+        CancellationToken cancellationToken)
     {
-        Exception? exception = null;
-
-        try
+        var smtpSendRequest = new SmtpSendRequest
         {
-            var message = new MailMessage();
+            Subject = request.Subject,
+            Body = request.Body,
+            Recipients = request.Recipients,
+        };
 
-            message.Subject = request.Subject;
-            message.Body = request.Body;
-
-            message.From = new MailAddress("test@mail.ru");
-
-            foreach (var recipient in request.Recipients)
-            {
-                message.To.Add(recipient);
-            }
-
-            using var smtp = new SmtpClient("localhost", 2525);
-
-            await smtp.SendMailAsync(message, cancellationToken);
-        }
-        catch (OperationCanceledException ex)
-            when (ex.CancellationToken == cancellationToken)
-        {
-            throw;
-        }
-        catch (Exception ex)
-        {
-            exception = ex;
-        }
+        var smtpSendResult = await smtpSendService.SmtpSendAsync(smtpSendRequest, cancellationToken);
 
         var mail = new DbMail
         {
@@ -58,9 +42,9 @@ public sealed class MailController : ControllerBase
             Subject = request.Subject,
             Body = request.Body,
             Recipients = request.Recipients,
-            Result = exception == null,
+            Result = smtpSendResult.Success,
             CreatedAt = DateTime.UtcNow,
-            FailedMessage = exception?.Message,
+            FailedMessage = smtpSendResult.ExceptionMessage,
         };
 
         _context.Mails.Add(mail);

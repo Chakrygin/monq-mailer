@@ -4,6 +4,9 @@ using Microsoft.Extensions.Options;
 
 namespace Monq.Mailer.Services;
 
+/// <summary>
+/// Сервис для отправки писем по smtp.
+/// </summary>
 public sealed class SmtpSendService
 {
     private readonly IOptions<SmtpOptions> _options;

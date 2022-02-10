@@ -1,5 +1,4 @@
-﻿using System.Net.Mail;
-using System.Net.Mime;
+﻿using System.Net.Mime;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +9,9 @@ using Monq.Mailer.Services;
 
 namespace Monq.Mailer.Controllers;
 
+/// <summary>
+/// Отвечает за работу с письмами.
+/// </summary>
 [ApiController]
 [Produces(MediaTypeNames.Application.Json)]
 public sealed class MailController : ControllerBase
@@ -21,6 +23,13 @@ public sealed class MailController : ControllerBase
         _context = context;
     }
 
+    /// <summary>
+    /// Отправляет письмо и записывает результат отправки в БД.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="smtpSendService"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpPost("api/mails")]
     public async Task<SendMailResponse> SendMail(
         [FromBody] SendMailRequest request,
@@ -57,6 +66,10 @@ public sealed class MailController : ControllerBase
         return response;
     }
 
+    /// <summary>
+    /// Возвращает список отправленных писем из БД.
+    /// </summary>
+    /// <returns></returns>
     [HttpGet("api/mails")]
     public async Task<GetMailsResponse> GetMails()
     {
